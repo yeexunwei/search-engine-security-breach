@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<form action="/show" method="post">
+  {{ form1.name.label(class="form-control-label") }}
+  {{ form1.name }}
+  {{ form1.submit1(class="btn btn-outline-info") }}
+</form>
+
+  {% for hit in info %}
+    <div class="media content-section">
+      <div class="media-body">
+        <p class="text-tertiary">Entity Covered: {{ hit['Entity'] }}</p>
+        <p class="text-secondary">Number: {{ hit['Number'] }}</p>
+        <p class="text-secondary">Type: {{ hit['Type'] }}</p>
+        <p class="text-secondary">{{ hit['Highlight'] | safe }}</p>
+        <details class="text-secondary">Summary: {{ hit['Summary'] }}</details></br>
+        <div class="row">
+          <p class="text-primary col-sm-4 other">Score: {{ hit['Score'] }}</p>
+          <p class="text-primary col-sm-4 other">Calculated Score: {{ hit['NewScore'] }}</p>
+          <p class="text-primary col-sm-2 other">Rating: {{ hit['Rating'] }}</p>
+
+
+          <form name="rating" id="{{ hit.Number }}" method="get" action="http://127.0.0.1:5000/api/rating?" class="rate col-sm-2 other">  
+            <input type="radio" id="star5" name="rate" value="5" onclick="my_button_click_handler({{hit.Number}})"/>
+            <label for="star5" title="text">5 stars</label>
+            <input type="radio" id="star4" name="rate" value="4" onclick="my_button_click_handler({{hit.Number}})"/>
+            <label for="star4" title="text">4 stars</label>
+            <input type="radio" id="star3" name="rate" value="3" onclick="my_button_click_handler({{hit.Number}})"/>
+            <label for="star3" title="text">3 stars</label>
+            <input type="radio" id="star2" name="rate" value="2" onclick="my_button_click_handler({{hit.Number}})"/>
+            <label for="star2" title="text">2 stars</label>
+            <input type="radio" id="star1" name="rate" value="1" onclick="my_button_click_handler({{hit.Number}})"/>
+            <label for="star1" title="text">1 star</label>
+
+            <input type="hidden" name="number" value="{{ hit.Number }}" />
+            <input type="hidden" name="term" value="{{ term }}" />
+            <input type="submit" value="Send Request">
+          </form>
+        </div>
+      </div>
+    </div>
+
+    
+  {% endfor %}
+<script>
+  function my_button_click_handler(id)
+  {
+    console.log(id)
+    e = document.getElementById(id)
+    console.log(e)
+    // e.submit();
+  // alert('Button Clcked');
+  }
+</script>
+{% endblock content %}

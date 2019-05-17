@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+
+  <div class="container">
+    <div class="row">
+      <p class="text-tertiary col-sm-8">Showing {{ basic['showing'] }} out of {{ basic['total'] }} results.</p>
+      <!-- <p class="text-info col-sm-4 text-right">{{ basic['keywords'] }}</p> -->
+    </div>
+  </div>
+
+  {% for hit in info %}
+    <div class="media content-section">
+      <div class="media-body">
+        <p class="text-tertiary">Entity Covered: {{ hit['Entity'] }}</p>
+        <div class="row">
+          <p class="text-secondary col-sm-4">Number: {{ hit['Number'] }}</p>
+          <p class="text-secondary col-sm-8">Type: {{ hit['Type'] }}</p>
+        </div>
+        <p class="text-secondary">{{ hit['Highlight'] | safe }}</p>
+        <details class="text-secondary">Summary: {{ hit['Summary'] }}</details></br>
+        <div class="row">
+          <p class="text-primary col-sm-3 other">Score: {{ hit['Score'] }}</p>
+          <p class="text-primary col-sm-4 other">New Score: {{ hit['NewScore'] }}</p>
+          <p class="text-primary col-sm-2 other">Rating: {{ hit['Rating'] }}</p>
+          <form class="col-sm-3 other" action="/api/rating" method="post">
+            {{ form1.number(value= hit['Number']) }}
+            {{ form1.term(value= term) }}
+            {% for substar in form1.rate %}
+            <tr>
+                <td>{{ substar }}</td>
+                <td>{{ substar.label }}</td>
+            </tr>
+            {% endfor %}
+            <td>
+              {{ form1.submit1(class="btn btn-secondary") }}
+            </td>
+          </div>
+        </form>
+      </div>
+    </div>    
+  {% endfor %}
+{% endblock content %}
