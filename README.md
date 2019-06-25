@@ -8,8 +8,6 @@ Rating system is provided for user to provide feedback to improve the ranking.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
 ```
 # flask
 pip install flask
