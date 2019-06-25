@@ -24,8 +24,9 @@ pip install whoosh
 export FLASK_APP=webapp.py
 flask run
 ```
-http://127.0.0.1:5000/search/security
-http://127.0.0.1:5000/api/search?term=breach
+Running on:
+* http://127.0.0.1:5000/search/security
+* http://127.0.0.1:5000/api/search?term=breach
 
 ## Built With
 
