@@ -1,4 +1,4 @@
-# Information Retrieval on Cyber-security Data
+# Information Retrieval on Cyber-Security Data
 Develop a search engine with Lucene model. Results returned are ranked using tf-idf score. Users provide relevance feedback to improve the effectiveness of the information retrieved.
 
 ## Project Objective
