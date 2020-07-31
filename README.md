@@ -1,6 +1,10 @@
 # search-engine-security-breach
 Develop a search engine with Lucene model. Results returned are ranked using tf-idf score. Users provide relevance feedback to improve the effectiveness of the information retrieved.
 
+![Screenshot showing results returned of a search term.](/assets/result.png)
+
+![Searching for term computer](/assets/search.png)
+
 ## Project Objective
 - To develop a system with information retrieval function implementing Lucene.
 - To rank search result based tf-idf score.
